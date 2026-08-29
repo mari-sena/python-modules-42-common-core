@@ -30,10 +30,9 @@ class Flower(Plant):
             print(f" {self.name} is blooming beautifully!")
         else:
             print(f" {self.name}: has not bloomed yet")
-	
+
     def statistics(self):
         print(f"[statistics for {self.name}]")
-	
 
 
 def main() -> None:

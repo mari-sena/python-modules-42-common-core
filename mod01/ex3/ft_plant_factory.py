@@ -57,10 +57,10 @@ def main() -> None:
 
     for data in plant_data:
         plant = Plant(
-            data["name"],
-            data["starting_height"],
-            data["starting_age"],
-            data.get("daily_growth", 2.0)
+            data["name"],  # type: ignore
+            data["starting_height"],  # type: ignore
+            data["starting_age"],  # type: ignore
+            data.get("daily_growth", 2.0)  # type: ignore
         )
         plants.append(plant)
 

@@ -1,13 +1,23 @@
 #!/usr/bin/env python3
+class Plant:
+    def __init__(self, name: str, age: int, height: float):
+        self.name = name
+        self.age = age
+        self.height = height
+
+    def show(self):
+        print(f"{self.name}: {self.height:.1f}cm, {self.age} days old")
+
+
 def main():
-    print("=== Welcome to My Garden ===")
-    name = "Rose"
-    height = 18
-    age = 30
-    print("Plant: %s" % name)
-    print("Height: %dcm" % height)
-    print("Age: %d days" % age)
-    print("=== End of Program ===")
+    print("=== Garden Plant Registry ===")
+    rose = Plant("Rose", 30, 25.0)
+    sunflower = Plant("Sunflower", 45, 80.0)
+    cactus = Plant("Cactus", 120, 15.0)
+
+    rose.show()
+    sunflower.show()
+    cactus.show()
 
 
 if __name__ == "__main__":

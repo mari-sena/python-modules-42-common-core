@@ -1,23 +1,23 @@
 #!/usr/bin/env python3
 class Plant:
     class _Stats:
-        def __init__(self):
+        def __init__(self) -> None:
             self.grow = 0
-            self.age = 0
+            self.days_old = 0
             self.show = 0
 
-        def __str__(self):
+        def __str__(self) -> str:
             return (f"Stats: {self.grow} grow, "
-                    f"{self.age} age, {self.show} show")
+                    f"{self.days_old} age, {self.show} show")
 
     def __init__(
         self,
         name: str,
-        age: int = 0,
+        days_old: int = 0,
         height: float = 0.0
-    ):
+    ) -> None:
         self.name = name
-        self.age = age
+        self.days_old = days_old
         self.height = height
         self._stats = Plant._Stats()
 
@@ -25,7 +25,7 @@ class Plant:
         self._stats.show += 1
         print(
             f"{self.name}: {self.height:.1f}cm, "
-            f"{self.age} days old"
+            f"{self.days_old} days old"
         )
 
     def _display_stats(self):
@@ -38,8 +38,8 @@ class Plant:
 
 
 class Flower(Plant):
-    def __init__(self, name, height=0.0, age=0, color="unknown"):
-        super().__init__(name, age, height)
+    def __init__(self, name, height=0.0, days_old=0, color="unknown"):
+        super().__init__(name, days_old, height)
         self.color = color
         self.bloomed = False
 
@@ -54,6 +54,12 @@ class Flower(Plant):
     def bloom(self):
         self.bloomed = True
 
+
+class Tree(Plant):
+    def __init__(
+        self,
+        
+    )
 
 def main() -> None:
     print("=== Garden statistics ===")
@@ -74,6 +80,16 @@ def main() -> None:
 
     print()
     print("=== Tree")
+    oak = Tree("Oak", 200.0, 365, 5.0)
+    oak.show()
+
+
+    print()
+    print("=== Seed")
+
+
+    print()
+    print("=== Anonymous")
 
 
 if __name__ == "__main__":

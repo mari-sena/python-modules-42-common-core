@@ -3,23 +3,28 @@ class Plant:
         self,
         name: str,
         height: float,
-        age: int
-    ):
+        days_old: int
+    ) -> None:
         self._name = name
-        self._height = height
-        self._days_old = age
-        self._day = 0
+        self._height = 0.0
+        self._days_old = 0
+        self.set_height(height)
+        self.set_age(days_old)
+        print(
+            f"Plant created: {self._name}: "
+            f"{round(self._height)}cm, "
+            f"{self._days_old} days old"
+        )
 
     def show(self) -> None:
         print(
-            f"Plant created: {self._name}:"
+            f"{self._name}: "
             f"{round(self._height)}cm, "
             f"{self._days_old} days old"
         )
 
     def age(self) -> None:
         self._days_old += 1
-        self._day += 1
 
     def get_height(self) -> float:
         return self._height
@@ -36,7 +41,6 @@ class Plant:
             print("Height update rejected")
             return
         self._height = height
-        print(f"Height updated: {round(self._height)}cm")
 
     def set_age(self, age: int) -> None:
         if age < 0:
@@ -44,19 +48,19 @@ class Plant:
             print("Age update rejected")
             return
         self._days_old = age
-        print(f"Age updated: {self._days_old} days")
 
 
 def main() -> None:
     print("=== Garden Security System ===")
-    rose = Plant("Rose", 25.1, 10)
-    rose.show()
+    rose = Plant("Rose", 15.0, 10)
 
     print()
-    rose.set_height(50)
-    rose.set_age(50)
-    print()
+    rose.set_height(25)
+    print(f"Height updated: {rose.get_height()}cm")
+    rose.set_age(30)
+    print(f"Age updated: {rose.get_age()} days")
 
+    print()
     rose.set_height(-5)
     rose.set_age(-10)
 

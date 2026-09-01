@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-def main():
+def main() -> None:
     print("=== Welcome to My Garden ===")
     name = "Rose"
     height = 18

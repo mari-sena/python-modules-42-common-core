@@ -1,19 +1,19 @@
+#!/usr/bin/env python3
 class Plant:
-    def __init__(self, name, height, age):
+    def __init__(self, name: str, age: int, height: float) -> None:
         self.name = name
-        self.height = height
         self.age = age
+        self.height = height
 
     def show(self):
-        print(f"{self.name}: {self.height}cm, {self.age} days old")
+        print(f"{self.name}: {self.height:.1f}cm, {self.age} days old")
 
 
-def main():
+def main() -> None:
     print("=== Garden Plant Registry ===")
-
-    rose = Plant("Rose", 25, 30)
-    sunflower = Plant("Sunflower", 80, 45)
-    cactus = Plant("Cactus", 15, 120)
+    rose = Plant("Rose", 30, 25.0)
+    sunflower = Plant("Sunflower", 45, 80.0)
+    cactus = Plant("Cactus", 120, 15.0)
 
     rose.show()
     sunflower.show()

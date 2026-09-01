@@ -5,20 +5,20 @@ class Plant:
         height: float,
         age: int,
         daily_growth: float
-    ):
+    ) -> None:
         self.name = name
         self.height = height
         self.days_old = age
         self.daily_growth = daily_growth
         self.day = 0
 
-    def show(self):
-        print(f"{self.name}: {round(self.height)}cm, {self.days_old} days old")
+    def show(self) -> None:
+        print(f"{self.name}: {self.height:.1f}cm, {self.days_old} days old")
 
-    def grow(self):
+    def grow(self) -> None:
         self.height += self.daily_growth
 
-    def age(self):
+    def age(self) -> None:
         self.days_old += 1
         self.day += 1
 
@@ -36,7 +36,7 @@ def main() -> None:
 
         print(f"=== Day {rose.day} ===")
         rose.show()
-    total_growth = round(rose.height - initial_height)
+    total_growth = round(rose.height - initial_height, 1)
     print(f"Growth this week: {total_growth}cm")
 
 

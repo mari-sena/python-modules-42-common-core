@@ -1,29 +1,40 @@
 class Plant:
-    def __init__(self, name, height=0.0, age=0):
+    def __init__(
+        self,
+        name: str,
+        height: float = 0.0,
+        days_old: int = 0
+    ) -> None:
         self.name = name
         self.height = height
-        self.age = age
+        self.days_old = days_old
 
-    def grow(self, amount=1.0):
+    def grow(self, amount: float = 1.0) -> None:
         self.height += amount
 
-    def age_plant(self, days=1):
-        self.age += days
+    def age(self, days: int = 1) -> None:
+        self.days_old += days
 
-    def show(self):
-        print(f"{self.name}: {self.height:.1f}cm, {self.age} days old")
+    def show(self) -> None:
+        print(f"{self.name}: {self.height:.1f}cm, {self.days_old} days old")
 
 
 class Flower(Plant):
-    def __init__(self, name, height=0.0, age=0, color="unknown"):
-        super().__init__(name, height, age)
+    def __init__(
+        self,
+        name: str,
+        height: float = 0.0,
+        days_old: int = 0,
+        color: str = "unknown"
+    ) -> None:
+        super().__init__(name, height, days_old)
         self.color = color
         self.bloomed = False
 
-    def bloom(self):
+    def bloom(self) -> None:
         self.bloomed = True
 
-    def show(self):
+    def show(self) -> None:
         super().show()
         print(f" Color: {self.color}")
         if self.bloomed:
@@ -35,53 +46,50 @@ class Flower(Plant):
 class Tree(Plant):
     def __init__(
         self,
-        name,
-        height=0.0,
-        age=0,
-        trunk_diameter=0.0
-    ):
-        super().__init__(name, height, age)
+        name: str,
+        height: float = 0.0,
+        days_old: int = 0,
+        trunk_diameter: float = 0.0
+    ) -> None:
+        super().__init__(name, height, days_old)
         self.trunk_diameter = trunk_diameter
 
-    def produce_shade(self):
+    def produce_shade(self) -> None:
         print(
             f"Tree {self.name} now produces a shade of "
             f"{self.height:.1f}cm long and "
             f"{self.trunk_diameter:.1f}cm wide."
         )
 
-    def show(self):
-        print("=== Tree")
+    def show(self) -> None:
         super().show()
         print(f" Trunk diameter: {self.trunk_diameter:.1f}cm")
-        print(f"[asking the {self.name.lower()} to produce shade]")
-        self.produce_shade()
 
 
 class Vegetable(Plant):
     def __init__(
         self,
-        name,
-        height=0.0,
-        age=0,
-        harvest_season="Unknown",
-        nutricional_value=0
-    ):
-        super().__init__(name, height, age)
+        name: str,
+        height: float = 0.0,
+        days_old: int = 0,
+        harvest_season: str = "Unknown",
+    ) -> None:
+        super().__init__(name, height, days_old)
         self.harvest_season = harvest_season
-        self.nutricional_value = nutricional_value
+        self.nutritional_value: float = 0
 
-    def grow(self, amount=1.0):
+    def grow(self, amount: float = 1.0) -> None:
         super().grow(amount)
+        self.nutritional_value += 0.5
 
-    def age_plant(self, days=1):
-        super().age_plant(days)
-        self.nutricional_value += days
+    def age(self, days: int = 1) -> None:
+        super().age(days)
+        self.nutritional_value += 0.5
 
-    def show(self):
+    def show(self) -> None:
         super().show()
         print(f" Harvest season: {self.harvest_season}")
-        print(f" Nutricional value: {self.nutricional_value}")
+        print(f" Nutricional value: {round(self.nutritional_value)}")
 
 
 def main() -> None:
@@ -95,16 +103,20 @@ def main() -> None:
     rose.show()
 
     print()
+    print("=== Tree")
     oak = Tree("Oak", 200.0, 365, 5.0)
     oak.show()
+    print(f"[asking the {oak.name.lower()} to produce shade]")
+    oak.produce_shade()
 
     print()
     print("=== Vegetable")
-    tomato = Vegetable("Tomato", 5.0, 10, "April", 0)
+    tomato = Vegetable("Tomato", 5.0, 10, "April")
     tomato.show()
     print("[make tomato grow and age for 20 days]")
-    tomato.grow(42)
-    tomato.age_plant(20)
+    for _ in range(20):
+        tomato.grow(2.1)
+        tomato.age()
     tomato.show()
 
 

@@ -1,11 +1,11 @@
 def garden_operations(operation_number: int) -> None:
-    if (operation_number == 0):
+    if operation_number == 0:
         int("abc")
-    elif (operation_number == 1):
+    elif operation_number == 1:
         10 / 0
-    elif (operation_number == 2):
+    elif operation_number == 2:
         open("/no/exist/")
-    elif (operation_number == 3):
+    elif operation_number == 3:
         "cold " + 25
 
 

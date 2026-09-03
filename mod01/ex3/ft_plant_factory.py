@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 class Plant:
     def __init__(
         self,
@@ -12,7 +15,7 @@ class Plant:
         self.daily_growth = daily_growth
 
         print(
-            f"Created: {self.name}: "
+            f"{self.name}: "
             f"{self.height:.1f}cm, "
             f"{self.days_old} days old"
         )
@@ -41,7 +44,6 @@ def main() -> None:
     for plant in plants:
         plant.grow()
         plant.age()
-        plant.show()
 
 
 if __name__ == "__main__":

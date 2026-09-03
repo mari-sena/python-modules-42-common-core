@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 class Plant:
     def __init__(
         self,
@@ -5,18 +8,18 @@ class Plant:
         height: float = 0.0,
         days_old: int = 0
     ) -> None:
-        self.name = name
-        self.height = height
-        self.days_old = days_old
+        self._name = name
+        self._height = height
+        self._days_old = days_old
 
     def grow(self, amount: float = 1.0) -> None:
-        self.height += amount
+        self._height += amount
 
     def age(self, days: int = 1) -> None:
-        self.days_old += days
+        self._days_old += days
 
     def show(self) -> None:
-        print(f"{self.name}: {self.height:.1f}cm, {self.days_old} days old")
+        print(f"{self._name}: {self._height:.1f}cm, {self._days_old} days old")
 
 
 class Flower(Plant):
@@ -38,9 +41,9 @@ class Flower(Plant):
         super().show()
         print(f" Color: {self.color}")
         if self.bloomed:
-            print(f" {self.name} is blooming beautifully!")
+            print(f" {self._name} is blooming beautifully!")
         else:
-            print(f" {self.name} has not bloomed yet")
+            print(f" {self._name} has not bloomed yet")
 
 
 class Tree(Plant):
@@ -56,8 +59,8 @@ class Tree(Plant):
 
     def produce_shade(self) -> None:
         print(
-            f"Tree {self.name} now produces a shade of "
-            f"{self.height:.1f}cm long and "
+            f"Tree {self._name} now produces a shade of "
+            f"{self._height:.1f}cm long and "
             f"{self.trunk_diameter:.1f}cm wide."
         )
 
@@ -89,7 +92,7 @@ class Vegetable(Plant):
     def show(self) -> None:
         super().show()
         print(f" Harvest season: {self.harvest_season}")
-        print(f" Nutricional value: {round(self.nutritional_value)}")
+        print(f" Nutritional value: {round(self.nutritional_value)}")
 
 
 def main() -> None:
@@ -106,7 +109,7 @@ def main() -> None:
     print("=== Tree")
     oak = Tree("Oak", 200.0, 365, 5.0)
     oak.show()
-    print(f"[asking the {oak.name.lower()} to produce shade]")
+    print("[asking the oak to produce shade]")
     oak.produce_shade()
 
     print()

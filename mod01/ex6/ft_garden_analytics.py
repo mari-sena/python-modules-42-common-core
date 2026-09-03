@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+
 class Plant:
     class _Stats:
         def __init__(self) -> None:
@@ -27,24 +29,24 @@ class Plant:
         height: float = 0.0,
         days_old: int = 0
     ) -> None:
-        self.name = name
-        self.height = height
-        self.days_old = days_old
+        self._name = name
+        self._height = height
+        self._days_old = days_old
         self._stats = Plant._Stats()
 
     def show(self) -> None:
         self._stats.add_show()
         print(
-            f"{self.name}: {self.height:.1f}cm, "
-            f"{self.days_old} days old"
+            f"{self._name}: {self._height:.1f}cm, "
+            f"{self._days_old} days old"
         )
 
     def grow(self, centimeters: float = 1.0) -> None:
-        self.height += centimeters
+        self._height += centimeters
         self._stats.add_grow()
 
     def age(self, days: int = 1) -> None:
-        self.days_old += days
+        self._days_old += days
         self._stats.add_age()
 
     def _display_stats(self) -> None:
@@ -76,9 +78,9 @@ class Flower(Plant):
         print(f" Color: {self.color}")
 
         if self.bloomed:
-            print(f" {self.name} is blooming beautifully!")
+            print(f" {self._name} is blooming beautifully!")
         else:
-            print(f" {self.name}: has not bloomed yet")
+            print(f" {self._name} has not bloomed yet")
 
     def bloom(self) -> None:
         self.bloomed = True
@@ -94,7 +96,7 @@ class Tree(Plant):
     ) -> None:
         super().__init__(name, height, days_old)
         self.trunk_diameter = trunk_diameter
-        self.shade = 0
+        self._shade = 0
 
     def show(self) -> None:
         super().show()
@@ -102,15 +104,41 @@ class Tree(Plant):
 
     def _display_stats(self) -> None:
         super()._display_stats()
-        print(f" {self.shade} shade")
+        print(f" {self._shade} shade")
 
     def produce_shade(self) -> None:
         print(
-            f"Tree {self.name} now produces "
-            f"a shade of {self.height:.1f}cm long "
+            f"Tree {self._name} now produces "
+            f"a shade of {self._height:.1f}cm long "
             f"and {self.trunk_diameter:.1f}cm wide."
         )
-        self.shade += 1
+        self._shade += 1
+
+
+class Vegetable(Plant):
+    def __init__(
+        self,
+        name: str,
+        height: float = 0.0,
+        days_old: int = 0,
+        harvest_season: str = "Unknown",
+    ) -> None:
+        super().__init__(name, height, days_old)
+        self.harvest_season = harvest_season
+        self.nutritional_value: float = 0
+
+    def grow(self, amount: float = 1.0) -> None:
+        super().grow(amount)
+        self.nutritional_value += 0.5
+
+    def age(self, days: int = 1) -> None:
+        super().age(days)
+        self.nutritional_value += 0.5
+
+    def show(self) -> None:
+        super().show()
+        print(f" Harvest season: {self.harvest_season}")
+        print(f" Nutritional value: {round(self.nutritional_value)}")
 
 
 class Seed(Flower):
@@ -134,7 +162,7 @@ class Seed(Flower):
 
 
 def display_statistics(plant: Plant) -> None:
-    print(f"[statistics for {plant.name}]")
+    print(f"[statistics for {plant._name}]")
     plant._display_stats()
 
 

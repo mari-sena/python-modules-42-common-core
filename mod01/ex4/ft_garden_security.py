@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 class Plant:
     def __init__(
         self,
@@ -12,14 +15,14 @@ class Plant:
         self.set_age(days_old)
         print(
             f"Plant created: {self._name}: "
-            f"{round(self._height)}cm, "
+            f"{round(self._height, 1)}cm, "
             f"{self._days_old} days old"
         )
 
     def show(self) -> None:
         print(
             f"{self._name}: "
-            f"{round(self._height)}cm, "
+            f"{round(self._height, 1)}cm, "
             f"{self._days_old} days old"
         )
 
@@ -55,8 +58,8 @@ def main() -> None:
     rose = Plant("Rose", 15.0, 10)
 
     print()
-    rose.set_height(25)
-    print(f"Height updated: {rose.get_height()}cm")
+    rose.set_height(25.0)
+    print(f"Height updated: {round(rose.get_height())}cm")
     rose.set_age(30)
     print(f"Age updated: {rose.get_age()} days")
 
@@ -66,7 +69,7 @@ def main() -> None:
 
     print(
         f"\nCurrent state: {rose.get_name()}: "
-        f"{round(rose.get_height(), 1)}cm, "
+        f"{rose.get_height()}cm, "
         f"{rose.get_age()} days old"
     )
 

@@ -24,7 +24,7 @@ def water_plant(plant_name: str) -> None:
 
 
 def test_watering_system() -> None:
-    print("\nTesting watering system...")
+    print("\nTesting valid plants...")
     print("Opening watering system")
 
     try:

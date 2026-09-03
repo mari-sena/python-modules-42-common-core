@@ -18,7 +18,7 @@ def test_temperature() -> None:
         print(f"Caught input_temperature error: {error}")
 
     print()
-    print("All testes completed - program didn't crash!")
+    print("All tests completed - program didn't crash!")
 
 
 def main() -> None:

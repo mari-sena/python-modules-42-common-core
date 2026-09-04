@@ -25,7 +25,7 @@ def gen_player_achievements() -> set[str]:
 
     return set(random.sample(
         achievements, k=random.randrange(1, len(achievements) + 1)
-        ))
+    ))
 
 
 def main() -> None:
@@ -45,7 +45,7 @@ def main() -> None:
     print(
         "\nAll distinct achievements: "
         f"{distinct_achievements}"
-        )
+    )
 
     common_achievements = alice.intersection(bob, charlie, dylan)
     print(f"\nCommon achievements: {common_achievements}")

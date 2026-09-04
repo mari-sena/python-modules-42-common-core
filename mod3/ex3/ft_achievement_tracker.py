@@ -24,7 +24,7 @@ def gen_player_achievements() -> set[str]:
     achievements = get_achievements()
 
     return set(random.sample(
-        achievements, k=random.randrange(1, len(achievements) + 1)
+        achievements, k=random.randrange(6, len(achievements) + 1)
     ))
 
 

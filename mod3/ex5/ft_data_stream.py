@@ -1,20 +1,57 @@
-def gen_event():
-    return ()
+import random
+import typing
+
+
+def gen_event() -> typing.Generator[tuple[str, str], None, None]:
+    players = ["alice", "bob", "charlie", "dylan"]
+    actions = [
+        "run",
+        "eat",
+        "sleep",
+        "grab",
+        "move",
+        "climb",
+        "swim",
+        "release",
+        "use"
+    ]
+
+    while True:
+        name = random.choice(players)
+        action = random.choice(actions)
+        yield name, action
+
+
+def consume_event(
+        events: list[tuple[str, str]]
+        ) -> typing.Generator[tuple[str, str], None, None]:
+    while len(events) > 0:
+        index = random.randrange(len(events))
+        event = events[index]
+        del events[index]
+        yield event
 
 
 def main() -> None:
     print("=== Game Data Stream Processor ===")
-    gen_event()
+
+    event_generator = gen_event()
+
+    for index in range(1000):
+        player, action = next(event_generator)
+        print(f"Event {index}: Player {player} did action {action}")
+
+    events: list[tuple[str, str]] = []
+
+    for _ in range(10):
+        events += [next(event_generator)]
+
+    print(f"Built list of 10 events: {events}")
+
+    for event in consume_event(events):
+        print(f"Got event from list: {event}")
+        print(f"Remains in list: {events}")
 
 
 if __name__ == "__main__":
     main()
-
-# next()
-# range()
-# len()
-# print()
-# import typing
-# typing.Generator
-# import random
-# random.*

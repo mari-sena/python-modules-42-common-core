@@ -29,12 +29,11 @@ def main() -> None:
     }
     print(f"Score dict: {score_dict}")
 
-    score_dict = [s for s in score_dict.values()]
-    score_average = sum(score_dict) / len(score_dict)
+    score_average = sum(score_dict.values()) / len(score_dict)
     print(f"Score average is {score_average}")
 
     high_scores = {
-        player: [score_dict]
+        player: score_dict[player]
         for player in score_dict
         if score_dict[player] > score_average
     }

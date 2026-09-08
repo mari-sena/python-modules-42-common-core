@@ -47,9 +47,9 @@ def main() -> None:
         return
 
     # Percentage
-    for item_name, quantity in items.items():
+    for item_name, quantity in items.keys():
         x: float = quantity / items_total_qty
-        print(f"Item {item_name[0]} represents {round(x * 100, 1)}%")
+        print(f"Item {item_name} represents {round(x * 100, 1)}%")
 
     # Most abundant
     most_abundant = max(items.values())

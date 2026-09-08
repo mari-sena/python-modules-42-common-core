@@ -26,12 +26,13 @@ def main() -> None:
     if len(scores) > 0:
         print(f"Scores processed: {scores}")
 
-        print(f"Total players: {argslen}")
+        players = len(scores)
+        print(f"Total players: {players}")
 
         total_score = sum(scores)
         print(f"Total score: {total_score}")
 
-        average_score = float(total_score / argslen)
+        average_score = total_score / argslen
         print(f"Average score: {average_score:.1f}")
 
         high_score = max(scores)

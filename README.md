@@ -18,3 +18,5 @@ brew install flake8
 cd ex<number>
 python3 ../main.py
 ```
+https://bytebytego.com/guides/linux-file-permission-illustrated/
+

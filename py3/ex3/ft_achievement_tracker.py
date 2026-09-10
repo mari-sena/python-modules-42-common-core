@@ -16,19 +16,6 @@ def get_achievements() -> list[str]:
         'Treasure Hunter',
         'First Steps',
         'Sharp Mind',
-        'Crafting Genius',
-        'World Savior',
-        'Master Explorer',
-        'Collector Supreme',
-        'Untouchable',
-        'Boss Slayer',
-        'Strategist',
-        'Unstoppable',
-        'Speed Runner',
-        'Survivor',
-        'Treasure Hunter',
-        'First Steps',
-        'Sharp Mind',
         'Dragon Slayer',
         'Dungeon Master',
         'Arena Champion',
@@ -44,7 +31,7 @@ def get_achievements() -> list[str]:
         'Master Builder',
         'Quest Finisher',
         'Treasure Master',
-        'Adventure Legend'
+        'Adventure Legend',
         'Hidden Path Finder'
     ]
 

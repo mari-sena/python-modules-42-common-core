@@ -10,6 +10,7 @@ def main() -> None:
         print("No arguments provided!")
     else:
         print(f"Arguments received: {argslen - 1}")
+        i = 0
         for arg in args:
             print(f"Arguments {i}: {arg}")
             i += 1

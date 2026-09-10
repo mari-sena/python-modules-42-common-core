@@ -16,7 +16,7 @@ def get_achievements() -> list[str]:
         'Treasure Hunter',
         'First Steps',
         'Sharp Mind',
-         'Crafting Genius',
+        'Crafting Genius',
         'World Savior',
         'Master Explorer',
         'Collector Supreme',

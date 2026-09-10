@@ -32,7 +32,7 @@ def main() -> None:
         total_score = sum(scores)
         print(f"Total score: {total_score}")
 
-        average_score = total_score / argslen
+        average_score = total_score / players
         print(f"Average score: {average_score:.1f}")
 
         high_score = max(scores)

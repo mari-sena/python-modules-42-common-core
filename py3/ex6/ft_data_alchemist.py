@@ -25,7 +25,7 @@ def main() -> None:
 
     score_dict = {
         player: random.randrange(0, 1000)
-        for player in capitalized_only
+        for player in capitalized_list
     }
     print(f"Score dict: {score_dict}")
 

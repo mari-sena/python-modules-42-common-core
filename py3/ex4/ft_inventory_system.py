@@ -47,7 +47,8 @@ def main() -> None:
         return
 
     # Percentage
-    for item_name, quantity in items.keys():
+    for item_name in items:
+        quantity = items[item_name]
         x: float = quantity / items_total_qty
         print(f"Item {item_name} represents {round(x * 100, 1)}%")
 

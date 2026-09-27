@@ -26,6 +26,12 @@ def main() -> None:
             print(f"Saving data to '{f.name}'")
             print(f"Data saved in file '{f.name}'.\n")
             f = content
+            while filename != '\0':
+                with open(filename, mode="r") as fn:
+                    for line in fn:
+                        with open(f, mode="w") as fn2:
+                            fn2.write(line)
+                            fn2.write("#")
             
         except PermissionError as error:
             print(f"Error opening file '{filename}': {error}\n")

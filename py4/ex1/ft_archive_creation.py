@@ -22,15 +22,10 @@ def main() -> None:
 
             print("Transform data:")
             print("---\n")
-            # with open(filename, 'r') as reader:
-            #     fineline = reader.readlines()
-            # new_filename = sys.argv[2]
-            # new_file = open(new_filename, "x")
-            
-            
-
-            print("\n---")
-                    
+            f = open(input("Enter new file name (or empty): "), "x")
+            print(f"Saving data to '{f.name}'")
+            print(f"Data saved in file '{f.name}'.\n")
+            f = content
             
         except PermissionError as error:
             print(f"Error opening file '{filename}': {error}\n")

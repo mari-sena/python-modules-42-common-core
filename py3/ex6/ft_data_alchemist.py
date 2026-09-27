@@ -30,7 +30,7 @@ def main() -> None:
     print(f"Score dict: {score_dict}")
 
     score_average = sum(score_dict.values()) / len(score_dict)
-    print(f"Score average is {score_average}")
+    print(f"Score average is {round(score_average, 2)}")
 
     high_scores = {
         player: score_dict[player]

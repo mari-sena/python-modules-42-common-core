@@ -12,7 +12,7 @@ def main() -> None:
         print(f"Arguments received: {argslen - 1}")
         i = 1
         for arg in args:
-            print(f"Arguments {i}: {arg}")
+            print(f"Argument {i}: {arg}")
             i += 1
     print(f"Total arguments: {argslen}")
 

@@ -2,14 +2,14 @@ import sys
 
 
 def store_items() -> dict[str, int]:
-    items_dict: dict[str, int] = dict()
+    items_dict: dict[str, int] = {}
 
     for item in sys.argv[1:]:
         if item.find(":") != -1:
             try:
                 result = item.split(":")
 
-                if len(result) != 2:
+                if len(result) != 2 or result[0] == "" or result[1] == "":
                     print(f"Error - invalid parameter '{item}'")
                     continue
 
@@ -45,6 +45,8 @@ def main() -> None:
 
     if len(items) == 0:
         return
+    if items_total_qty == 0:
+        return
 
     # Percentage
     for item_name in items:
@@ -53,23 +55,26 @@ def main() -> None:
         print(f"Item {item_name} represents {round(x * 100, 1)}%")
 
     # Most abundant
-    most_abundant = max(items.values())
+    most_name = items_list[0]
     for item_name in items:
-        if most_abundant == items[item_name]:
-            print(
-                f"Item most abundant: {item_name} "
-                f"with quantity {most_abundant}"
-            )
-            break
+        if items[item_name] > items[most_name]:
+            most_name = item_name
+
+    print(
+		f"Item most abundant: {most_name} "
+		f"with quantity {items[most_name]}"
+	)
+
     # Least abundant
-    least_abundant = min(items.values())
+    least_name = items_list[0]
     for item_name in items:
-        if least_abundant == items[item_name]:
-            print(
-                f"Item least abundant: {item_name} "
-                f"with quantity {least_abundant}"
-            )
-            break
+        if items[item_name] < items[least_name]:
+            least_name = item_name
+
+    print(
+		f"Item least abundant: {least_name} "
+		f"with quantity {items[least_name]}"
+	)
 
     # Update
     items.update({"magic_item": 1})

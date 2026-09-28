@@ -29,12 +29,12 @@ def main() -> None:
             print("\n---")
             new_filename = input("Enter new file name (or empty): ")
             print(f"Saving data to '{new_filename}'")
-            print(f"Data saved in file '{new_filename}'.\n")
             with open(filename, mode="r") as fn:
                 with open(new_filename, mode="w") as fn2:
                     for line in fn:
                         fn2.write(line.strip())
                         fn2.write("#\n")
+            print(f"Data saved in file '{new_filename}'.\n")
 
         except PermissionError as error:
             print(f"Error opening file '{filename}': {error}\n")

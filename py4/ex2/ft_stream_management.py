@@ -38,7 +38,7 @@ def main() -> None:
         new_filename = remove_new_line(sys.stdin.readline())
 
         if len(new_filename) == 0:
-            print(f"Data not saved.", file=sys.stderr)
+            print("Data not saved.", file=sys.stderr)
             return
 
         print(f"Saving data to '{new_filename}'")

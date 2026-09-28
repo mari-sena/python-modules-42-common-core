@@ -18,21 +18,24 @@ def main() -> None:
             print(content)
             print("\n---")
             file.close()
-            print(f"File '{filename}' closed.")
+            print(f"File '{filename}' closed.\n")
 
             print("Transform data:")
             print("---\n")
-            f = open(input("Enter new file name (or empty): "), "x")
-            print(f"Saving data to '{f.name}'")
-            print(f"Data saved in file '{f.name}'.\n")
-            f = content
-            while filename != '\0':
-                with open(filename, mode="r") as fn:
+            with open(filename, mode="r") as fn:
+                for line in fn:
+                    print(f"{line.strip()}#")
+
+            print("\n---")
+            new_filename = input("Enter new file name (or empty): ")
+            print(f"Saving data to '{new_filename}'")
+            print(f"Data saved in file '{new_filename}'.\n")
+            with open(filename, mode="r") as fn:
+                with open(new_filename, mode="w") as fn2:
                     for line in fn:
-                        with open(f, mode="w") as fn2:
-                            fn2.write(line)
-                            fn2.write("#")
-            
+                        fn2.write(line.strip())
+                        fn2.write("#\n")
+
         except PermissionError as error:
             print(f"Error opening file '{filename}': {error}\n")
             return

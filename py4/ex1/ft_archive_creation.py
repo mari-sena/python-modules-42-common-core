@@ -2,13 +2,19 @@ import sys
 import typing
 
 
+def remove_new_line(line: str) -> str:
+    if len(line) > 0 and line[-1] == "\n":
+        return line[:-1]
+    return line
+
+
 def main() -> None:
     print("=== Cyber Archives Recovery & Preservation ===")
     args_len = len(sys.argv)
-    if args_len == 1:
+    if args_len != 2:
         print("Usage: ft_ancient_text.py <file>\n")
         return
-    if args_len == 2:
+    else:
         filename = sys.argv[1]
         print(f"Accessing file '{filename}'")
         try:
@@ -24,7 +30,7 @@ def main() -> None:
             print("---\n")
             with open(filename, mode="r") as fn:
                 for line in fn:
-                    print(f"{line.strip()}#")
+                    print(f"{remove_new_line(line)}#")
 
             print("\n---")
             new_filename = input("Enter new file name (or empty): ")
@@ -32,7 +38,7 @@ def main() -> None:
             with open(filename, mode="r") as fn:
                 with open(new_filename, mode="w") as fn2:
                     for line in fn:
-                        fn2.write(line.strip())
+                        fn2.write(remove_new_line(line))
                         fn2.write("#\n")
             print(f"Data saved in file '{new_filename}'.\n")
 

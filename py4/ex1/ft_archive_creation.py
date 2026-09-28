@@ -14,7 +14,6 @@ def main() -> None:
     if args_len != 2:
         print("Usage: ft_ancient_text.py <file>\n")
         return
-
     filename = sys.argv[1]
     print(f"Accessing file '{filename}'")
     try:
@@ -54,7 +53,8 @@ def main() -> None:
         print(
             f"Error opening file '{filename}': "
             f"{error}\n"
-            )
+        )
+        return
 
 
 if __name__ == "__main__":

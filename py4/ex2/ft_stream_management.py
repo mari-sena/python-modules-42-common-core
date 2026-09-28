@@ -15,7 +15,6 @@ def main() -> None:
     if args_len != 2:
         print("Usage: ft_stream_management.py <file>\n")
         return
-    
     filename = sys.argv[1]
     print(f"Accessing file '{filename}'")
     try:
@@ -38,7 +37,7 @@ def main() -> None:
         new_filename = remove_new_line(sys.stdin.readline())
 
         if len(new_filename) == 0:
-            print("Data not saved.", file=sys.stderr)
+            print("Data not saved.")
             return
 
         print(f"Saving data to '{new_filename}'")
@@ -66,9 +65,10 @@ def main() -> None:
         return
     except FileNotFoundError as error:
         print(
-            f"[STDERR] Error opening file '{filename}':  {error}\n",
+            f"[STDERR] Error opening file '{filename}': {error}\n",
             file=sys.stderr
         )
+        return
 
 
 if __name__ == "__main__":

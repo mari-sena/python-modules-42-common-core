@@ -14,42 +14,47 @@ def main() -> None:
     if args_len != 2:
         print("Usage: ft_ancient_text.py <file>\n")
         return
-    else:
-        filename = sys.argv[1]
-        print(f"Accessing file '{filename}'")
-        try:
-            file: typing.IO[str] = open(filename, "r")
-            content = file.read()
-            print("---\n")
-            print(content)
-            print("\n---")
-            file.close()
-            print(f"File '{filename}' closed.\n")
 
-            print("Transform data:")
-            print("---\n")
-            with open(filename, mode="r") as fn:
-                for line in fn:
-                    print(f"{remove_new_line(line)}#")
+    filename = sys.argv[1]
+    print(f"Accessing file '{filename}'")
+    try:
+        file: typing.IO[str] = open(filename, "r")
+        content = file.read()
+        print("---\n")
+        print(content)
+        print("\n---")
+        file.close()
+        print(f"File '{filename}' closed.\n")
 
-            print("\n---")
-            new_filename = input("Enter new file name (or empty): ")
-            print(f"Saving data to '{new_filename}'")
-            with open(filename, mode="r") as fn:
-                with open(new_filename, mode="w") as fn2:
-                    for line in fn:
-                        fn2.write(remove_new_line(line))
-                        fn2.write("#\n")
-            print(f"Data saved in file '{new_filename}'.\n")
+        print("Transform data:")
+        print("---\n")
+        with open(filename, mode="r") as fn:
+            for line in fn:
+                print(f"{remove_new_line(line)}#")
 
-        except PermissionError as error:
-            print(f"Error opening file '{filename}': {error}\n")
+        print("\n---")
+        new_filename = input("Enter new file name (or empty): ")
+
+        if len(new_filename) == 0:
+            print("Data not saved.")
             return
-        except FileNotFoundError as error:
-            print(
-                f"Error opening file '{filename}': "
-                f"{error}\n"
-                )
+    
+        print(f"Saving data to '{new_filename}'")
+        with open(filename, mode="r") as fn:
+            with open(new_filename, mode="w") as fn2:
+                for line in fn:
+                    fn2.write(remove_new_line(line))
+                    fn2.write("#\n")
+        print(f"Data saved in file '{new_filename}'.\n")
+
+    except PermissionError as error:
+        print(f"Error opening file '{filename}': {error}\n")
+        return
+    except FileNotFoundError as error:
+        print(
+            f"Error opening file '{filename}': "
+            f"{error}\n"
+            )
 
 
 if __name__ == "__main__":

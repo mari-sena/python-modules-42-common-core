@@ -53,10 +53,8 @@ def main() -> None:
                 f"[STDERR] Error opening file '{new_filename}': {error}",
                 file=sys.stderr
             )
-            print(f"Data not saved.", file=sys.stderr)
+            print("Data not saved.", file=sys.stderr)
             return
-
-
     except PermissionError as error:
         print(
             f"[STDERR] Error opening file '{filename}': {error}\n",

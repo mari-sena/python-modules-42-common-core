@@ -37,7 +37,7 @@ def main() -> None:
         if len(new_filename) == 0:
             print("Data not saved.")
             return
-    
+
         print(f"Saving data to '{new_filename}'")
         with open(filename, mode="r") as fn:
             with open(new_filename, mode="w") as fn2:

@@ -61,9 +61,9 @@ def main() -> None:
             most_name = item_name
 
     print(
-		f"Item most abundant: {most_name} "
-		f"with quantity {items[most_name]}"
-	)
+        f"Item most abundant: {most_name} "
+        f"with quantity {items[most_name]}"
+    )
 
     # Least abundant
     least_name = items_list[0]
@@ -72,9 +72,9 @@ def main() -> None:
             least_name = item_name
 
     print(
-		f"Item least abundant: {least_name} "
-		f"with quantity {items[least_name]}"
-	)
+        f"Item least abundant: {least_name} "
+        f"with quantity {items[least_name]}"
+    )
 
     # Update
     items.update({"magic_item": 1})

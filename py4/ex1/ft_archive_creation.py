@@ -30,6 +30,7 @@ def main() -> None:
         fn = open(filename, mode="r")
         for line in fn:
             print(f"{remove_new_line(line)}#")
+        fn.close()
 
         print("\n---")
         new_filename = input("Enter new file name (or empty): ")
@@ -44,6 +45,8 @@ def main() -> None:
         for line in fn2:
             fn3.write(remove_new_line(line))
             fn3.write("#\n")
+        fn2.close()
+        fn3.close()
         print(f"Data saved in file '{new_filename}'.\n")
     except PermissionError as error:
         print(f"Error opening file '{filename}': {error}\n")

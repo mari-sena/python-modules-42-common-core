@@ -49,7 +49,7 @@ def main() -> None:
         fn3.close()
         print(f"Data saved in file '{new_filename}'.\n")
     except PermissionError as error:
-        print(f"Error opening file '{filename}': {error}\n")
+        print(f"Error opening file '{new_filename}': {error}\n")
         return
     except FileNotFoundError as error:
         print(

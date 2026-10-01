@@ -7,12 +7,10 @@ def secure_archive(
     message = ''
     try:
         if action == "w":
-            file = open(filename, mode="w")
-            file.write(content)
-            file.close()
-        file = open(filename, mode="r")
-        message = file.read()
-        file.close()
+            with open(filename, mode="w") as file:
+                  file.write(content)
+        with open(filename, mode="r") as file:
+            message = file.read()
     except FileNotFoundError as error:
         status = False
         message = f"{error}"

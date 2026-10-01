@@ -1,13 +1,15 @@
-import abc
+from abc import ABC, abstractmethod
 import typing
 
 
 def main() -> None:
 	print("=== Code Nexus - Data Processor ===")
-	class DataProcessor(abc):
-		def abs_validate(self, data: typing.Any) -> bool:
+	class DataProcessor(ABC):
+		@abstractmethod
+		def validate(self, data: typing.Any) -> bool:
 			pass
-		def abs_ingest(self, data: typing.Any) -> None:
+		@abstractmethod
+		def ingest(self, data: typing.Any) -> None:
 			pass
 		def output(self):
 			pass
@@ -24,6 +26,7 @@ def main() -> None:
 
 	print("Testing Numeric Processor...")
 	print(" Trying to validate input '42': ")
+	num = NumericProcessor(42)
 	print(" Trying to validate input 'Hello': ")
 	print(" Test invalid ingestion of string 'foo' without prior validation:")
 	print(" Got exception: ")

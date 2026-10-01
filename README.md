@@ -24,3 +24,6 @@ https://bytebytego.com/guides/linux-file-permission-illustrated/
 - [Why Is It Important to Close Files in Python?](https://realpython.com/why-close-file-python/)
 - [Create a New File](https://www.w3schools.com/python/python_file_write.asp)
 - [Python Cheatsheets](https://realpython.com/cheatsheets/python/)
+
+-[ABC methods](https://docs.python.org/3/glossary.html#term-abstract-base-class)
+- [Abstract base class](https://realpython.com/ref/glossary/abstract-base-class/)

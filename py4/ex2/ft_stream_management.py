@@ -28,9 +28,10 @@ def main() -> None:
 
         print("Transform data:")
         print("---\n")
-        with open(filename, mode="r") as fn:
-            for line in fn:
-                print(f"{remove_new_line(line)}#")
+        fn = open(filename, mode="r")
+        for line in fn:
+            print(f"{remove_new_line(line)}#")
+        fn.close()
 
         print("\n---")
         print("Enter new file name (or empty): ", end="", flush=True)
@@ -42,11 +43,13 @@ def main() -> None:
 
         print(f"Saving data to '{new_filename}'")
         try:
-            with open(filename, mode="r") as fn:
-                with open(new_filename, mode="w") as fn2:
-                    for line in fn:
-                        fn2.write(remove_new_line(line))
-                        fn2.write("#\n")
+            fn2 = open(filename, mode="r")
+            fn3 = open(new_filename, mode="w")
+            for line in fn2:
+                fn3.write(remove_new_line(line))
+                fn3.write("#\n")
+            fn2.close()
+            fn3.close()
             print(f"Data saved in file '{new_filename}'.\n")
         except PermissionError as error:
             print(

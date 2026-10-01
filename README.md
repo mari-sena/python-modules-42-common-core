@@ -25,5 +25,6 @@ https://bytebytego.com/guides/linux-file-permission-illustrated/
 - [Create a New File](https://www.w3schools.com/python/python_file_write.asp)
 - [Python Cheatsheets](https://realpython.com/cheatsheets/python/)
 
--[ABC methods](https://docs.python.org/3/glossary.html#term-abstract-base-class)
+- [ABC methods](https://docs.python.org/3/glossary.html#term-abstract-base-class)
 - [Abstract base class](https://realpython.com/ref/glossary/abstract-base-class/)
+- [Mastering abstract base classes](https://leapcell.medium.com/elegant-abstractions-mastering-abstract-base-classes-in-advanced-python-bf3739dd815e)

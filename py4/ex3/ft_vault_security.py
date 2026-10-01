@@ -8,7 +8,7 @@ def secure_archive(
     try:
         if action == "w":
             with open(filename, mode="w") as file:
-                  file.write(content)
+                file.write(content)
         with open(filename, mode="r") as file:
             message = file.read()
     except FileNotFoundError as error:

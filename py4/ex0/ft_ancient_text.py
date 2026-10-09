@@ -16,7 +16,6 @@ def main() -> None:
         print("---\n")
         print(content)
         print("\n---")
-        file.close()
         print(f"File '{filename}' closed.")
     except PermissionError as error:
         print(f"Error opening file '{filename}': {error}\n")
@@ -26,6 +25,7 @@ def main() -> None:
             f"Error opening file '{filename}': "
             f"{error}\n"
             )
+    file.close()
 
 
 if __name__ == "__main__":

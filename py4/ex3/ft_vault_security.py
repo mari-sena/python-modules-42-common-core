@@ -3,22 +3,18 @@ def secure_archive(
         action: str = "r",
         content: str = ""
         ) -> tuple[bool, str]:
-    status = True
-    message = ''
     try:
         if action == "w":
             with open(filename, mode="w") as file:
                 file.write(content)
-        with open(filename, mode="r") as file:
-            message = file.read()
-    except FileNotFoundError as error:
-        status = False
-        message = f"{error}"
-    except PermissionError as error:
-        status = False
-        message = f"{error}"
-    return (status, message)
+            return (True, "Content successfully written to file")
 
+        if action == "r":
+            with open(filename, mode="r") as file:
+                return (True, file.read())
+        return (False, "Invalid action")
+    except OSError as error:
+        return (False, str(error))
 
 def main() -> None:
     print("=== Cyber Archives Security ===\n")

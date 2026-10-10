@@ -28,3 +28,9 @@ https://bytebytego.com/guides/linux-file-permission-illustrated/
 - [ABC methods](https://docs.python.org/3/glossary.html#term-abstract-base-class)
 - [Abstract base class](https://realpython.com/ref/glossary/abstract-base-class/)
 - [Mastering abstract base classes](https://leapcell.medium.com/elegant-abstractions-mastering-abstract-base-classes-in-advanced-python-bf3739dd815e)
+
+## Criando arquivos testes ancient_frament.txt
+
+```
+printf '%s\n%s\n%s' '[FRAGMENT 001] Digital preservation protocols established 2087' '[FRAGMENT 002] Knowledge must survive the entropy wars' '[FRAGMENT 003] Every byte saved is a victory against oblivion' > ancient_fragment.txt
+```

@@ -2,74 +2,77 @@ import sys
 import typing
 
 
-def remove_new_line(line: str) -> str:
-    if len(line) > 0 and line[-1] == "\n":
-        return line[:-1]
-    return line
+def transform_content(content: str) -> str:
+    transformed = ""
+    for line in content.splitlines(keepends=True):
+        if line.endswith("\r\n"):
+            transformed += line[:-2] + "#\r\n"
+        elif line.endswith("\n") or line.endswith("\r"):
+            transformed += line[:-1] + "#" + line[-1]
+        else:
+            transformed += line + "#"
+    return transformed
 
 
 def main() -> None:
-    print("=== Cyber Archives Recovery & Preservation ===")
-
     args_len = len(sys.argv)
     if args_len != 2:
         print("Usage: ft_stream_management.py <file>\n")
         return
+
     filename = sys.argv[1]
+    print("=== Cyber Archives Recovery & Preservation ===")
     print(f"Accessing file '{filename}'")
+
     try:
         file: typing.IO[str] = open(filename, "r")
-        content = file.read()
-        print("---\n")
-        print(content)
-        print("\n---")
-        file.close()
-        print(f"File '{filename}' closed.\n")
-
-        print("Transform data:")
-        print("---\n")
-        fn = open(filename, mode="r")
-        for line in fn:
-            print(f"{remove_new_line(line)}#")
-        fn.close()
-
-        print("\n---")
-        print("Enter new file name (or empty): ", end="", flush=True)
-        new_filename = remove_new_line(sys.stdin.readline())
-
-        if len(new_filename) == 0:
-            print("Data not saved.")
-            return
-
-        print(f"Saving data to '{new_filename}'")
         try:
-            fn2 = open(filename, mode="r")
-            fn3 = open(new_filename, mode="w")
-            for line in fn2:
-                fn3.write(remove_new_line(line))
-                fn3.write("#\n")
-            fn2.close()
-            fn3.close()
-            print(f"Data saved in file '{new_filename}'.\n")
-        except PermissionError as error:
-            print(
-                f"[STDERR] Error opening file '{new_filename}': {error}",
-                file=sys.stderr
-            )
-            print("Data not saved.", file=sys.stderr)
-            return
-    except PermissionError as error:
+            content = file.read()
+        finally:
+            file.close()
+    except OSError as error:
         print(
-            f"[STDERR] Error opening file '{filename}': {error}\n",
+            f"[STDERR] Error opening file '{filename}': {error}",
             file=sys.stderr
         )
         return
-    except FileNotFoundError as error:
+
+    print("---\n")
+    print(content, end="")
+    print("\n---")
+    print(f"File '{filename}' closed.\n")
+
+    transformed = transform_content(content)
+    print("Transform data:")
+    print("---\n")
+    print(transformed, end="")
+    print("\n---")
+
+    print("Enter new file name (or empty): ", end="", flush=True)
+    new_filename = sys.stdin.readline()
+    if new_filename.endswith("\n"):
+        new_filename = new_filename[:-1]
+
+    if len(new_filename) == 0:
+        print("Data not saved.")
+        return
+
+    print(f"Saving data to '{new_filename}'")
+    try:
+        new_file: typing.IO[str] = open(new_filename, "w")
+        try:
+            new_file.write(transformed)
+        finally:
+            new_file.close()
+    except OSError as error:
         print(
-            f"[STDERR] Error opening file '{filename}': {error}\n",
+            f"[STDERR] Error opening file '{new_filename}': {error}",
             file=sys.stderr
         )
+        print("Data not saved.")
         return
+
+    print(f"Data saved in file '{new_filename}'.")
 
 
 if __name__ == "__main__":

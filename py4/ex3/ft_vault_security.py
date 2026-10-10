@@ -26,13 +26,14 @@ def main() -> None:
     print(secure_archive('master.passwd.txt'))
 
     print("\nUsing 'secure_archive' to read from a regular file:")
-    print(secure_archive('ancient_fragment.txt'))
+    success, previous_content = secure_archive("ancient_fragment.txt")
+    print((success, previous_content))
 
     print("\nUsing 'secure_archive' to write previous content to a new file:")
-    print(secure_archive(
-        'acient_fragment.txt', 'w',
-        'Content successfully written to file'
-        ))
+    if success:
+        print(secure_archive("new_fragment.txt", "w", previous_content))
+    else:
+        print((False, "Source file could not be read; nothing was written"))
 
 
 if __name__ == "__main__":

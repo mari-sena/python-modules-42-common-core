@@ -12,20 +12,18 @@ def main() -> None:
     print(f"Accessing file '{filename}'")
     try:
         file: typing.IO[str] = open(filename, "r")
-        content = file.read()
-        print("---\n")
-        print(content)
-        print("\n---")
-        print(f"File '{filename}' closed.")
-    except PermissionError as error:
+        try:
+            content = file.read()
+        finally:
+            file.close()
+    except OSError as error:
         print(f"Error opening file '{filename}': {error}\n")
         return
-    except FileNotFoundError as error:
-        print(
-            f"Error opening file '{filename}': "
-            f"{error}\n"
-            )
-    file.close()
+
+    print("---\n")
+    print(content, end="")
+    print("\n---")
+    print(f"File '{filename}' closed.")
 
 
 if __name__ == "__main__":

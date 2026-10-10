@@ -48,11 +48,11 @@ def main() -> None:
     try:
         new_filename = input("Enter new file name (or empty): ")
     except EOFError:
-        print("Data not saved.")
+        print("Not saving data.")
         return
 
     if len(new_filename) == 0:
-        print("Data not saved.")
+        print("Not saving data.")
         return
 
     print(f"Saving data to '{new_filename}'")
@@ -64,7 +64,7 @@ def main() -> None:
             new_file.close()
     except OSError as error:
         print(f"Error opening file '{new_filename}': {error}\n")
-        print("Data not saved.")
+        print("Not saving data.")
         return
 
     print(f"Data saved in file '{new_filename}'.\n")

@@ -21,7 +21,7 @@ def main() -> None:
         return
 
     print("---\n")
-    print(content, end="")
+    print(content)
     print("\n---")
     print(f"File '{filename}' closed.")
 

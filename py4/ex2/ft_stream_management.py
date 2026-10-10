@@ -38,14 +38,14 @@ def main() -> None:
         return
 
     print("---\n")
-    print(content, end="")
+    print(content)
     print("\n---")
     print(f"File '{filename}' closed.\n")
 
     transformed = transform_content(content)
     print("Transform data:")
     print("---\n")
-    print(transformed, end="")
+    print(transformed)
     print("\n---")
 
     print("Enter new file name (or empty): ", end="", flush=True)

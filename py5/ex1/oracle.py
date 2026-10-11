@@ -73,5 +73,6 @@ def main() -> None:
 
     print("\nThe Oracle sees all configurations.")
 
+
 if __name__ == "__main__":
     main()

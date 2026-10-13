@@ -46,8 +46,8 @@ def main() -> None:
     else:
         print("\nSome reagents are missing.")
         print("To install dependencies:")
-        print("Using pip: python3 -m pip install -r requirements.txt")
-        print("Using Poetry: cd ex0 && poetry install")
+        print("Using pip: python3 -m pip install -r ex0/requirements.txt")
+        print("Using Poetry: cd ex0 && pip install poetry && poetry install")
 
 
 if __name__ == "__main__":

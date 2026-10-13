@@ -1,6 +1,4 @@
 import os
-from dotenv import dotenv_values, load_dotenv
-
 
 def load_configs(original_mode: str | None) -> None:
     database = os.getenv("DATABASE_URL")
@@ -45,6 +43,7 @@ def env_is_ignored() -> None:
 
 
 def verify_mode_override(original_mode: str | None) -> None:
+    from dotenv import dotenv_values, load_dotenv
     env_path = os.path.join(os.path.dirname(__file__), ".env")
     file_values = dotenv_values(env_path)
 
@@ -57,21 +56,26 @@ def verify_mode_override(original_mode: str | None) -> None:
 
 
 def main() -> None:
-    original_mode = os.getenv("MATRIX_MODE")
-    load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
+    try:
+        from dotenv import dotenv_values, load_dotenv
+        original_mode = os.getenv("MATRIX_MODE")
+        load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
-    mode = os.getenv("MATRIX_MODE", "development")
+        mode = os.getenv("MATRIX_MODE", "development")
 
-    print("ORACLE STATUS: Consulting the configuration...\n")
+        print("\nORACLE STATUS: Consulting the configuration...\n")
 
-    load_configs(mode)
+        load_configs(mode)
 
-    print("\nConfiguration security check:")
-    print("[OK] No hardcoded secrets detected")
-    env_is_ignored()
-    verify_mode_override(original_mode)
+        print("\nConfiguration security check:")
+        print("[OK] No hardcoded secrets detected")
+        env_is_ignored()
+        verify_mode_override(original_mode)
 
-    print("\nThe Oracle sees all configurations.")
+        print("\nThe Oracle sees all configurations.")
+    except ModuleNotFoundError:
+        print("Dependencies needed, install them with:")
+        print("python3 -m pip install -r ex1/requirements.txt")
 
 
 if __name__ == "__main__":

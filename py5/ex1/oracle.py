@@ -69,12 +69,14 @@ def verify_mode_override(original_mode: str | None) -> None:
 
 def main() -> None:
     original_mode = os.getenv("MATRIX_MODE")
-
-    load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
-
+    env_path = os.path.join(os.path.dirname(__file__), ".env")
+    load_dotenv(env_path)
     mode = os.getenv("MATRIX_MODE", "development")
 
     print("\nORACLE STATUS: Consulting the configuration...\n")
+
+    if not os.path.isfile(env_path):
+        print("[WARNING] .env file not found. Using environment or default values.")
 
     load_configs(mode)
 

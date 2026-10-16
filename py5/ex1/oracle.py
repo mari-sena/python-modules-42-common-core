@@ -76,7 +76,7 @@ def main() -> None:
     print("\nORACLE STATUS: Consulting the configuration...\n")
 
     if not os.path.isfile(env_path):
-        print("[WARNING] .env file not found. Using environment or default values.")
+        print("[WARNING] .env file not found. Using environment or default values.\n")
 
     load_configs(mode)
 

@@ -7,11 +7,11 @@ except ModuleNotFoundError as error:
     if error.name != "dotenv":
         raise
 
-
     print("[ERROR] Missing dependency: python-dotenv")
     print("To install dependencies, run:")
     print("python3 -m pip install -r ex1/requirements.txt")
     raise SystemExit(1)
+
 
 def load_configs(original_mode: str | None) -> None:
     database = os.getenv("DATABASE_URL")

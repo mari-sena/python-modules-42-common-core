@@ -34,3 +34,11 @@ https://bytebytego.com/guides/linux-file-permission-illustrated/
 ```
 printf '%s\n%s\n%s' '[FRAGMENT 001] Digital preservation protocols established 2087' '[FRAGMENT 002] Knowledge must survive the entropy wars' '[FRAGMENT 003] Every byte saved is a victory against oblivion' > ancient_fragment.txt
 ```
+
+## Comandos úteis pra avaliação py5
+```
+    mypy --strict *.py
+    python3 -m pip install -r ex1/requirements.txt
+    cp ex1/.env.example ex1/.env
+    MATRIX_MODE=production python3 ex1/oracle.py
+```

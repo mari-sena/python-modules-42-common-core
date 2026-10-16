@@ -37,6 +37,11 @@ printf '%s\n%s\n%s' '[FRAGMENT 001] Digital preservation protocols established 2
 
 ## Comandos úteis pra avaliação py5
 ```
+    python3 -m venv lab_env
+    deactivate
+```
+
+```
     mypy --strict *.py
     python3 -m pip install -r ex1/requirements.txt
     cp ex1/.env.example ex1/.env

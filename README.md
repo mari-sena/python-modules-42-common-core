@@ -1,7 +1,7 @@
 ## Verificar versão do python no pc:
 
 ```jsx
-python --version
+    python --version
 ```
 
 ## No Mac está 3.12.7 atualmente
@@ -9,14 +9,14 @@ python --version
 ## Instalei no mac com brew:
 
 ```jsx
-brew install flake8
+    brew install flake8
 ```
 
 ## Utilizando main.py para testar os exercícios
 
 ```jsx
-cd ex<number>
-python3 ../main.py
+    cd ex<number>
+    python3 ../main.py
 ```
 https://bytebytego.com/guides/linux-file-permission-illustrated/
 
@@ -32,7 +32,7 @@ https://bytebytego.com/guides/linux-file-permission-illustrated/
 ## Criando arquivos testes ancient_frament.txt
 
 ```
-printf '%s\n%s\n%s' '[FRAGMENT 001] Digital preservation protocols established 2087' '[FRAGMENT 002] Knowledge must survive the entropy wars' '[FRAGMENT 003] Every byte saved is a victory against oblivion' > ancient_fragment.txt
+    printf '%s\n%s\n%s' '[FRAGMENT 001] Digital preservation protocols established 2087' '[FRAGMENT 002] Knowledge must survive the entropy wars' '[FRAGMENT 003] Every byte saved is a victory against oblivion' > ancient_fragment.txt
 ```
 
 ## Comandos úteis pra avaliação py5

@@ -1,5 +1,18 @@
 import os
 
+
+try:
+    from dotenv import dotenv_values, load_dotenv
+except ModuleNotFoundError as error:
+    if error.name != "dotenv":
+        raise
+
+
+    print("[ERROR] Missing dependency: python-dotenv")
+    print("To install dependencies, run:")
+    print("python3 -m pip install -r ex1/requirements.txt")
+    raise SystemExit(1)
+
 def load_configs(original_mode: str | None) -> None:
     database = os.getenv("DATABASE_URL")
     api_key = os.getenv("API_KEY")
@@ -43,7 +56,6 @@ def env_is_ignored() -> None:
 
 
 def verify_mode_override(original_mode: str | None) -> None:
-    from dotenv import dotenv_values, load_dotenv
     env_path = os.path.join(os.path.dirname(__file__), ".env")
     file_values = dotenv_values(env_path)
 
@@ -56,26 +68,22 @@ def verify_mode_override(original_mode: str | None) -> None:
 
 
 def main() -> None:
-    try:
-        from dotenv import dotenv_values, load_dotenv
-        original_mode = os.getenv("MATRIX_MODE")
-        load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
+    original_mode = os.getenv("MATRIX_MODE")
 
-        mode = os.getenv("MATRIX_MODE", "development")
+    load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
-        print("\nORACLE STATUS: Consulting the configuration...\n")
+    mode = os.getenv("MATRIX_MODE", "development")
 
-        load_configs(mode)
+    print("\nORACLE STATUS: Consulting the configuration...\n")
 
-        print("\nConfiguration security check:")
-        print("[OK] No hardcoded secrets detected")
-        env_is_ignored()
-        verify_mode_override(original_mode)
+    load_configs(mode)
 
-        print("\nThe Oracle sees all configurations.")
-    except ModuleNotFoundError:
-        print("Dependencies needed, install them with:")
-        print("python3 -m pip install -r ex1/requirements.txt")
+    print("\nConfiguration security check:")
+    print("[OK] No hardcoded secrets detected")
+    env_is_ignored()
+    verify_mode_override(original_mode)
+
+    print("\nThe Oracle sees all configurations.")
 
 
 if __name__ == "__main__":

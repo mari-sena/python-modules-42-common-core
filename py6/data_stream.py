@@ -13,7 +13,7 @@ class DataStream:
 
     def register_processor(self, proc: DataProcessor) -> None:
         self.processors.append(proc)
-    
+
     def process_stream(self, stream: list[Any]) -> None:
         for element in stream:
             for processor in self.processors:
@@ -25,13 +25,13 @@ class DataStream:
                     "DataStream error - Can't process element "
                     f"in stream: {element}"
                 )
-    
+
     def print_processors_stats(self) -> None:
         print("== DataStream statistics ==")
         if not self.processors:
             print("No processor found, no data")
             return
-        
+
         for processor in self.processors:
             processor_name = type(processor).__name__.replace(
                 "Processor", " Processor"
@@ -85,7 +85,10 @@ def main() -> None:
     data_stream.process_stream(tulipa)
     data_stream.print_processors_stats()
 
-    print("\nConsume some elements from the data processors: Numeric 3, Text 2, Log 1")
+    print(
+        "\nConsume some elements from the data processors:"
+        " Numeric 3, Text 2, Log 1"
+    )
     for _ in range(3):
         numeric.output()
     for _ in range(2):

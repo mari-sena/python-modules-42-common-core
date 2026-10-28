@@ -44,9 +44,9 @@ class JSONExportPlugin:
                 escaped += f"\\u{ord(char):04x}"
             else:
                 escaped += char
-        
+
         return escaped
-    
+
     def process_output(self, data: list[tuple[int, str]]) -> None:
         items = [
             f'"item_{rank}": "{self._escape(value)}"'
@@ -61,7 +61,7 @@ class DataStream(BaseDataStream):
     def output_pipeline(self, nb: int, plugin: ExportPlugin) -> None:
         if nb < 0:
             raise ValueError("nb must be non-negative")
-        
+
         for processor in self.processors:
             data: list[tuple[int, str]] = []
 
@@ -70,7 +70,7 @@ class DataStream(BaseDataStream):
                     data.append(processor.output())
                 except IndexError:
                     break
-            
+
             if data:
                 plugin.process_output(data)
 

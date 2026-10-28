@@ -37,8 +37,8 @@ class DataStream:
                 "Processor", " Processor"
             )
             print(
-                f"{processor.name}: total {processor._next_rank} "
-                f"items processed, remaining {len(proceremainingssor.data)} "
+                f"{processor_name}: total {processor._next_rank} "
+                f"items processed, remaining {len(processor._data)} "
                 f"on processor"
             )
 

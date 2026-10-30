@@ -1,0 +1,45 @@
+from ex3 import CreateFactory, FlameFactory, TransformCreatureFactory
+
+
+def test_factory(factory: CreateFactory) -> None:
+    print("Testing factory")
+
+    base = factory.create_base()
+    print(base.describe())
+    print(base.attack())
+
+    evolved = factory.create_evolved()
+    print(evolved.describe())
+    print(evolved.attack())
+
+
+def battle_factories(
+    first_factory: CreateFactory,
+    second_factory: CreateFactory,
+) -> None:
+    print("Testing battle")
+
+    first = first_factory.create_base()
+    second = second_factory.create_base()
+
+    print(first.describe())
+    print(" vs.")
+    print(second.describe())
+    print(" fight!")
+    print(first.attack())
+    print(second.attack())
+
+
+def main() -> None:
+    flame_factory = FlameFactory()
+    transform_factory = TransformCreatureFactory()
+
+    test_factory(flame_factory)
+    print()
+    test_factory(transform_factory)
+    print()
+    battle_factories(flame_factory, transform_factory)
+
+
+if __name__ == "__main__":
+    main()

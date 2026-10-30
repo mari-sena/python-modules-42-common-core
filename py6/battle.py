@@ -1,7 +1,7 @@
-from ex3 import CreateFactory, FlameFactory, TransformCreatureFactory
+from ex3 import CreatureFactory, FlameFactory, TransformCreatureFactory
 
 
-def test_factory(factory: CreateFactory) -> None:
+def test_factory(factory: CreatureFactory) -> None:
     print("Testing factory")
 
     base = factory.create_base()
@@ -14,8 +14,8 @@ def test_factory(factory: CreateFactory) -> None:
 
 
 def battle_factories(
-    first_factory: CreateFactory,
-    second_factory: CreateFactory,
+    first_factory: CreatureFactory,
+    second_factory: CreatureFactory,
 ) -> None:
     print("Testing battle")
 
